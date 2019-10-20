@@ -13,26 +13,26 @@ class CommonMigration extends Migration
      */
     public function up()
     {
-        // $this->users_table();
-        // $this->password_reset_table();
-        // $this->extra_cost_table();
-        // $this->hfooter_text_table();
-        // $this->terms_of_payment_table();
-        // $this->report_labels_table();
-        // $this->settings_table();
-        // $this->products_table();
-        // $this->customers_table();
-        // $this->invoices_table();
-        // $this->items_table();
-        // $this->invoice_payments_table();
-        // $this->documents_table();
-        // $this->orders_table();
-        // $this->estimates_table();
-        // $this->porders_table();
+        $this->users_table();
+        $this->password_reset_table();
+        $this->extra_cost_table();
+        $this->hfooter_text_table();
+        $this->terms_of_payment_table();
+        $this->report_labels_table();
+        $this->settings_table();
+        $this->products_table();
+        $this->customers_table();
+        $this->invoices_table();
+        $this->items_table();
+        $this->invoice_payments_table();
+        $this->documents_table();
+        $this->orders_table();
+        $this->estimates_table();
+        $this->porders_table();
         $this->expenses_table();
-        // $this->main_category_table();
-        // $this->sub_category_table();
-        // $this->drugs_table();
+        $this->main_category_table();
+        $this->sub_category_table();
+        $this->drugs_table();
     }
 
     /**
