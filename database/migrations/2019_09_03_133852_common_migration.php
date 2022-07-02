@@ -13,26 +13,29 @@ class CommonMigration extends Migration
      */
     public function up()
     {
-        $this->users_table();
-        $this->password_reset_table();
-        $this->extra_cost_table();
-        $this->hfooter_text_table();
-        $this->terms_of_payment_table();
-        $this->report_labels_table();
-        $this->settings_table();
-        $this->products_table();
-        $this->customers_table();
-        $this->invoices_table();
-        $this->items_table();
-        $this->invoice_payments_table();
-        $this->documents_table();
-        $this->orders_table();
-        $this->estimates_table();
-        $this->porders_table();
-        $this->expenses_table();
-        $this->main_category_table();
-        $this->sub_category_table();
-        $this->drugs_table();
+        // $this->users_table();
+        // $this->password_reset_table();
+        // $this->extra_cost_table();
+        // $this->hfooter_text_table();
+        // $this->terms_of_payment_table();
+        // $this->report_labels_table();
+        // $this->settings_table();
+        // $this->products_table();
+        // $this->customers_table();
+        // $this->invoices_table();
+        // $this->items_table();
+        // $this->invoice_payments_table();
+        // $this->documents_table();
+        // $this->orders_table();
+        // $this->estimates_table();
+        // $this->porders_table();
+        // $this->expenses_table();
+        // $this->main_category_table();
+        // $this->sub_category_table();
+        // $this->drugs_table();
+        // $this->sample();
+        $this->category();
+        $this->product();
     }
 
     /**
@@ -48,7 +51,7 @@ class CommonMigration extends Migration
         // Schema::dropIfExists('sub_category_table');
         // Schema::dropIfExists('main_category_table');
         // $tables = ['users','password_resets','extra_cost','hfooter_text','terms_of_payment','report_labels','settings','products','customers','invoices','items','invoice_payments','documents','orders','estimates','porders','expenses','main_category_table','sub_category_table','drugs_table'];
-        $tables = ['expenses'];
+        $tables = ['category','product'];
         foreach ($tables as $table) {
             Schema::dropIfExists($table);
         }
@@ -568,6 +571,25 @@ class CommonMigration extends Migration
             $table->unsignedSmallInteger('pack_size');
             $table->unsignedMediumInteger('mrp');
             $table->string('url',100);
+            $table->timestamps();
+        });
+    }
+
+    public function category()
+    {
+        Schema::create('category', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+
+    public function product()
+    {
+        Schema::create('product', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedMediumInteger('category_id');
+            $table->string('name');
             $table->timestamps();
         });
     }

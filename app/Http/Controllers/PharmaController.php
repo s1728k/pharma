@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\MainCategory;
 use App\SubCategory;
 use App\Drug;
+use App\Product1;
+use App\Category;
 use App\Traits\ScrapesWeb;
 use Illuminate\Http\Request;
 
@@ -20,7 +22,9 @@ class PharmaController extends Controller
 
     public function HomeView()
     {
-        return view('home');
+        $cat = Category::all();
+        $prod = Product1::all();
+        return view('home')->with(['category'=>$cat,'products'=>$prod]);
     }
 
     public function ScrapeMainCategory()
